@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be My Valentine 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ff9ec4, #ff4d6d);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+      color: white;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 400px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    .frog {
+      width: 140px;
+      margin: 10px auto 20px;
+      display: block;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      position: relative;
+    }
+
+    button {
+      border: none;
+      border-radius: 50px;
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .yes {
+      background-color: #ff2e63;
+      color: white;
+      font-size: 1.5rem;
+      padding: 18px 35px;
+      margin-right: 10px;
+    }
+
+    .yes:hover {
+      transform: scale(1.1);
+    }
+
+    .no {
+      background-color: #888;
+      color: white;
+      font-size: 0.8rem;
+      padding: 8px 12px;
+      opacity: 0.6;
+      cursor: not-allowed;
+      animation: shake 0.6s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-2px); }
+      50% { transform: translateX(2px); }
+      75% { transform: translateX(-2px); }
+      100% { transform: translateX(0); }
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ffebf0;
+      animation: floatUp 6s linear infinite;
+      font-size: 20px;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh) scale(1); opacity: 1; }
+      to { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Will you be my Valentine? 💘</h1>
+
+    <!-- Replace frog.png with the frog picture file you upload -->
+    <img src="frog.png" alt="Cute Frog" class="frog" />
+
+    <div class="buttons">
+      <button class="yes" onclick="sayYes()">YES 💖</button>
+      <button class="no" disabled>no</button>
+    </div>
+
+    <div class="message" id="loveMessage">YAYYYY 🥰 I love you!!! 💞🐸</div>
+  </div>
+
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    function sayYes() {
+      document.getElementById('loveMessage').style.display = 'block';
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      document.getElementById('hearts').appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
